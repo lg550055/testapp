@@ -1,5 +1,5 @@
 export default function Profile(props) {
   return (
-    <h2>Profile</h2>
+    <h1>Profile</h1>
   );
 }
