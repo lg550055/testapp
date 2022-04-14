@@ -1,38 +1,147 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+
+* { margin: 0; padding: 0; font-weight: normal;}
+
+body {
+  background-color: black;
+  font-family: 'Roboto';
   text-align: center;
+  line-height: 1.25;
+  color: cadetblue;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('../public/img/code3.jpg');
+  background-size: cover;
+  padding: 18vh 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+aside {
+  background-color: azure;
+  padding: 2em 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 1em;
+  text-align: left;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+article {
+  background-color: azure;
+  padding: 8vh 0;
+}
+article > h1, h2 {
+  color: darkgreen;
+}
+article > div {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  max-width: 900px;
+  margin: 3vh auto 5vh;
+}
+article img {
+  padding-top: 2vh;
+  width: 16vh;
 }
 
-.App-link {
-  color: #61dafb;
+.sharp {
+  background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('../public/img/group.jpg');
+  background-size: cover;
+  background-position: bottom;
+  padding: 10vw 0 0 6vw;
+  text-align: left;
+  min-height: 60vh;
+}
+.sharp > div {
+  max-width: min(600px, 60vw);
+  color: azure;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#curr {
+  margin: 0 auto;
+  padding: 11vh min(1em, 2vw) 17vh;
+  max-width: 900px;
+  display: grid;
+  grid-template: auto auto / 1fr min-content 50%;
+  align-items: center;
+  text-align: left;
 }
+#curr h1 {
+  grid-area: 1 / 1 / 2 / 4;
+  padding-bottom: 1em;
+}
+#curr > em {
+  font-size: 15vw;
+  font-style: normal;
+  padding-right: 1vw;
+}
+#curr p {
+  padding-bottom: 10px;
+}
+#curr img {
+  padding: 0 5px 10px 0;
+}
+
+.tile {
+  margin: 0 auto;
+  max-width: 900px;
+  display: grid;
+  grid-template: auto auto / 60% minmax(max-content, 1fr);
+  gap: min(1em, 2vw);
+  text-align: left;
+  padding: 12vh min(1em, 2vw) 19vh;
+}
+.tile > h1 {
+  grid-area: 1 / 1 / 2 / 3;
+}
+.tile div {
+  padding: 7vh min(2.5em, 5vw);
+  background-color: rgb(20, 26, 20);
+}
+
+nav {
+  text-align: right;
+  padding: 10px;
+}
+nav > img {
+  height: 35px;
+  padding-top: 5px;
+  float: left;
+}
+nav a {
+  padding-right: 8px;
+  line-height: 1;
+  font-size: min(3vw , 16px);
+  text-transform: uppercase;
+}
+
+footer p {
+  font-size: min(3vw , 18px);
+}
+
+a {
+  line-height: 2.5;
+  text-decoration: none;
+  color: darkgreen;
+}
+a:hover {
+  color: cadetblue;
+}
+
+button {
+  background-color:darkgreen;
+  border-radius: 9px;
+  border: none;
+  color: azure;
+  padding: 0.5em 1.5em;
+}
+button:hover {
+  background-color: cadetblue;
+}
+
+h1 {font-size: min(6vw , 40px); color: azure; padding-bottom: 0.5em; font-weight: bold;}
+h2 {font-size: min(5vw , 30px); padding-bottom: 0.25em;}
+h3 {font-size: min(4vw , 22px); padding-bottom: 0.25em;}
+h4 {font-size: min(4vw , 22px); color: darkgreen; padding-bottom: 0.25em;}
+h5 {font-size: min(4vw , 20px); padding-bottom: 0.25em; line-height: 1.5;}
+p {font-size: min(3.5vw , 20px);}
