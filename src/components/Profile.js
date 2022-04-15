@@ -1,5 +1,8 @@
 export default function Profile(props) {
   return (
-    <h1>Profile</h1>
+    <section className="hero">
+      <h1>Profile</h1>
+      <h3>View and set preferences here</h3>
+    </section>
   );
 }
