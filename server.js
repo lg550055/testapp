@@ -1,36 +1,50 @@
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config();
 const {MongoClient} = require('mongodb');
 
 const app = express();
 app.use(cors());
-// use express.json() to access req.body...
+// express.json() allows access req.body...
 app.use(express.json())  
 
-async function main() {
-  const uri = 'mongodb+srv://pologonz:hardtoguess@main.mks0e.mongodb.net/gh?retryWrites=true&w=majority';
+// pending: use cache to avoid multiple connections
+async function dbConn() {
+  const uri = process.env.DB_URI;
   const client = new MongoClient(uri, { useNewUrlParser: true });
   try {
     await client.connect();
-
-    const coll = client.db('gh').collection('users');
-
-    // coll.insertOne({name:'u3'}, email:'s@m.e'})
-    // coll.deleteOne({name:'u3'})
-    coll.updateOne({name:'u3'}, {$set: {zip: 71101}})
-    const cursor = coll.find()
-    const r = await cursor.toArray();
-
-    r.forEach(e => {
-      console.log(e)
-    });
+    return client.db('gh').collection('users');
 
   } catch(e) {
     console.log(e);
-  } finally {
-    client.close();
   }
+  // finally {
+  //   client.close();
+  // }
 }
+
+// const adduser = (coll, obj) => {
+//   coll.insertOne(obj)
+// }
+// const getcred = (coll, obj) => {
+//   coll.findOne(obj).then(r => console.log(r.email))
+// }
+// const updateuser = (coll, filter, update) => {
+//   coll.updateOne(filter, update)
+// }
+// const deluser = (coll, obj) => {
+//   coll.deleteOne(obj)
+// }
+
+// let myobj = {name:'u3'};
+
+async function coll () {
+  const collection = await dbConn();
+  const users = await collection.find().toArray();
+  console.log(users)
+}
+coll()
 
 app.post('/login', (req, res) => {
   // query DB to confirm user exists and user email is ok
@@ -43,5 +57,3 @@ app.post('/signup', (req, res) => {
 })
 
 // app.listen(8080, ()=> console.log('Listening on 8080'));
-
-main();
